@@ -3,6 +3,7 @@ package com.nostraAcademy.NASnakeLadder;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Board {
 	int cell;
 	
@@ -17,7 +18,7 @@ public class Board {
     }
     
     public Board() {
-        cell = 100;
+        this.cell = 100;
 //        assuming winingPositon = 100; 
     }
     
@@ -30,6 +31,23 @@ public class Board {
     	addSnake(66, 3);
     	addSnake(24, 8);
     	addSnake(86, 22);
+    }
+    
+    public void moveThrough( Player player, int diceRoll){
+        if(player.position + diceRoll > cell){
+            return;
+        }
+        player.position += diceRoll;
+        if (snake.get(player.position) != null ){
+            System.out.println(player.name+ " Bit By snake!!!");
+            player.position = snake.get(player.position);
+            System.out.println("move to: "+ player.position);
+        }
+        if (ladder.get(player.position) != null ){
+            System.out.println(player.name+" Got ladder!!!");
+            player.position = ladder.get(player.position);
+            System.out.println("move to: "+ player.position);
+        }
     }
 
 }

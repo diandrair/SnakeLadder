@@ -8,8 +8,10 @@ package com.nostraAcademy.NASnakeLadder;
 public class App 
 {
     public static void main( String[] args )
-    {
-    	Game game = new Game();
+    {	Board board = new Board();
+    	Game game = new Game(board);
     	game.addPlayer();
+    	game.board.addoardEntity();
+    	game.launch();
     }
 }
