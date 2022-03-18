@@ -60,14 +60,14 @@ public class Board {
         }
         player.position += diceRoll;
         if (snake.get(player.position) != null ){
-            System.out.println(player.name+ " Bit By snake!!!");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> " + player.name+ " Bit By snake!!!");
             player.position = snake.get(player.position);
-            System.out.println("move to: "+ player.position);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> move to: "+ player.position);
         }
         if (ladder.get(player.position) != null ){
-            System.out.println(player.name+" Got ladder!!!");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> " + player.name+" Got ladder!!!");
             player.position = ladder.get(player.position);
-            System.out.println("move to: "+ player.position);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>> move to: "+ player.position);
         }
     }
 
