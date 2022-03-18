@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 
-
 public class Game {
  	
 	public Board board;
@@ -17,6 +16,7 @@ public class Game {
     
     Scanner sc = new Scanner(System.in);
     
+    
     public Game(Board board) {
 		super();
 		this.board = board;
@@ -26,6 +26,7 @@ public class Game {
     public void addPlayer() {
     	 System.out.print("Enter number of players : ");
          int numberOfPlayers = sc.nextInt();
+         
          
          System.out.println("What are the names of the " + numberOfPlayers + " players?");
          for(int loop = 1; loop <= numberOfPlayers; loop++) {
@@ -40,33 +41,43 @@ public class Game {
      }
 
 	
-	public void launch() {
+    public void launch() {
         int currentTurn = 0;
         while (winnerList.size() < players.size()-1) {
         	 
 
-            if (currentTurn >= players.size()) {
+            if (currentTurn >= players.size() - 1) {
 
                 currentTurn = 0;
             } else {
                 currentTurn += 1;
 
             }
+        	
+        	
             Player currPlayer = players.get(currentTurn);
             if (currPlayer.position == 100) {
                 continue;
             }
+            else {
+            	System.out.println(">"+ currPlayer.getName()+"'s turn<");
+            }
             int rollValue = dice.rollDice();
+            int finalPos = currPlayer.position + rollValue;
+            System.out.println("You got: "+rollValue);
+            System.out.println("Taking you to "+ finalPos);
             board.moveThrough(currPlayer, rollValue);
             if (currPlayer.position == board.cell) {
                 winnerList.add(currPlayer);
-                System.out.println(currPlayer.name + " won!!");
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>" + currPlayer.name + " won!!");
             }
             for (Player player : players) {
                 System.out.println(player.name + " current Position " + player.position);
+                
             }
+            
         }
         
-	}
+      }
 	
 }

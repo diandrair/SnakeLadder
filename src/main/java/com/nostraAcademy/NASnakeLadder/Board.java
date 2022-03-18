@@ -2,19 +2,31 @@ package com.nostraAcademy.NASnakeLadder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class Board {
+	Scanner scInt = new Scanner(System.in);
+	Scanner scStr = new Scanner(System.in);
+	int num;
 	int cell;
 	
 	Map<Integer, Integer> snake = new HashMap<>();
     Map<Integer,Integer> ladder = new HashMap<>();
 
-    public void addSnake(int head, int tail){
-        snake.put(head,tail);
+    public void addSnake() {
+    	System.out.print("Enter Snake position hi(spasi)low : ");
+    	String numStr = scStr.nextLine();
+    	String [] strArr = numStr.split(" ");
+    	
+        snake.put(Integer.valueOf(strArr[0]), Integer.valueOf(strArr[1]));
     }
-    public void addLadder(int start, int end){
-        ladder.put(start,end);
+    public void addLadder(){
+    	System.out.print("Enter Ladder position low(spasi)hi : ");
+    	String numStr = scStr.nextLine();
+    	String [] strArr = numStr.split(" ");
+    	
+        ladder.put(Integer.valueOf(strArr[0]), Integer.valueOf(strArr[1]));
     }
     
     public Board() {
@@ -22,15 +34,24 @@ public class Board {
 //        assuming winingPositon = 100; 
     }
     
-    public void addoardEntity() {
-    	addLadder(51,87);
-    	addLadder(28,77);
-    	addLadder(4, 42);
-    	addLadder(30, 90);
-    	addSnake(98, 36);
-    	addSnake(66, 3);
-    	addSnake(24, 8);
-    	addSnake(86, 22);
+    public void addBoardEntity() {
+    	
+    	System.out.print("Enter number of Snake : ");
+    	int numSnake = scInt.nextInt();
+    	
+    	for(int loop = 1; loop <= numSnake; loop++) {
+    	addSnake();
+    	
+    	}
+    	
+    	System.out.print("Enter number of Ladder : ");
+    	int numLad = scInt.nextInt();
+    	
+    	for(int loop = 1; loop <= numLad; loop++) {
+    	addLadder();
+    	
+    	}
+    
     }
     
     public void moveThrough( Player player, int diceRoll){
